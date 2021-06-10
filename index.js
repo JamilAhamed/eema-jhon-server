@@ -32,37 +32,37 @@ client.connect(err => {
         .then(result =>{
             console.log(result.insertedCount);
             res.send(result.insertedCount)
-        })
-    })
+        });
+    });
        
     app.get('/products', (req, res) =>{
       productsCollection.find({})
       .toArray((err,documents) =>{
         res.send(documents);
-      })
-    })
+      });
+    });
 
     app.get('/products/:key', (req, res) =>{
       productsCollection.find({key: req.params.key})
       .toArray((err,documents) =>{
         res.send(documents[0]);
-      })
-    })
+      });
+    });
 
     app.post('/productsKeys',(req, res) =>{
       const productsKeys =req.body;
       productsCollection.find({key: { $in: productsKeys }})
       .toArray((err, documents) =>{
         res.send(documents);
-      })
-    })
+      });
+    });
     app.post('/addOrder', (req, res) =>{
       const order = req.body;
       ordersCollection.insertOne(order)
       .then(result =>{
           res.send(result.insertedCount > 0)
-      })
-  })
+      });
+  });
 
 
 
@@ -75,4 +75,4 @@ client.connect(err => {
 //   res.send('Hello World!')
 // })
 
-app.listen(process.env.PORT || port)
+app.listen(process.env.PORT || port);
