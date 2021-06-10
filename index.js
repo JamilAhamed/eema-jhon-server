@@ -27,7 +27,7 @@ client.connect(err => {
   console.log('database connected')
 
   client.connect((err) =>{
-    console.log("databse connection errors:, err")
+    console.log("Database connection errors:", err)
   }) 
 
     app.post('/addProduct', (req, res) =>{
