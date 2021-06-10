@@ -26,6 +26,10 @@ client.connect(err => {
   const ordersCollection = client.db("eemaJhonStoree").collection("orders");
   console.log('database connected')
 
+  client.connect((err) =>{
+    console.log("databse connection errors:, err")
+  }) 
+
     app.post('/addProduct', (req, res) =>{
         const products = req.body;
         productsCollection.insertOne(products)
